@@ -45,9 +45,6 @@ func (c *Session) sendCandidatesHandler() {
 		if candidate == nil {
 			return
 		}
-		c.CandidateCond.L.Lock()
-		c.CandidateCond.Broadcast()
-		c.CandidateCond.L.Unlock()
 
 		if !c.candidateChOpen.Load() {
 			return

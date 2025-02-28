@@ -28,7 +28,7 @@ func configureLogger() {
 }
 
 func main() {
-	configureLogger()
+	//configureLogger()
 	err := cmd.App()
 	if err != nil {
 		log.Fatal(err)
