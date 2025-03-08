@@ -29,6 +29,7 @@ func New() *Session {
 		Ctx:        ctx,
 		CtxCancel:  cancel,
 		DataChOpen: make(chan struct{}, 10),
+		GatherDone: make(chan struct{}, 1),
 		MsgCh:      make(chan *webrtc.DataChannelMessage, 200),
 	}
 }

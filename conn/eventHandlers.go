@@ -64,10 +64,9 @@ func (c *Session) monitorConnectState() {
 }
 func (c *Session) monitorGatherState() {
 	c.Conn.OnICEGatheringStateChange(func(state webrtc.ICEGatheringState) {
-		c.GatherDone = make(chan struct{}, 1)
 		log.Info("gathering state:", state.String())
 		if state == webrtc.ICEGatheringStateComplete {
-			c.GatherDone <- struct{}{}
+			close(c.GatherDone)
 		}
 	})
 
